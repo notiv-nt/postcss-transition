@@ -29,5 +29,10 @@
     "postcss-transition",
     "transition",
     "transition defaults"
-  ]
+  ],
+  "homepage": "https://github.com/notiv-nt/postcss-transition",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notiv-nt/postcss-transition.git"
+  }
 }
