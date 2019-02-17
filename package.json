@@ -1,0 +1,33 @@
+{
+  "name": "postcss-transition",
+  "description": "Allows you to set the default value for the transition shorthand property",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mikhail Novikov <notiv.nt@gmail.com>",
+  "scripts": {
+    "watch": "nodemon --inspect test.dev.js",
+    "test": "jest test.js",
+    "test:dev": "jest --watch test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "css-properties-values": "^1.0.0",
+    "postcss": "^7.0.14",
+    "postcss-value-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0",
+    "node-watch": "^0.6.0",
+    "nodemon": "^1.18.10"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "postcss-transition",
+    "transition",
+    "transition defaults"
+  ]
+}
