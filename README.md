@@ -1,5 +1,11 @@
 # [postcss-transition](https://www.npmjs.com/package/postcss-transition)
 
+## Installation
+
+```
+npm i postcss-transition
+```
+
 Plugin that allows you to set the **default** value for the **transition shorthand** property
 
 ## USAGE:
