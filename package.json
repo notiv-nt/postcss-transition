@@ -1,7 +1,7 @@
 {
   "name": "postcss-transition",
   "description": "Allows you to set the default value for the transition shorthand property",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Mikhail Novikov <notiv.nt@gmail.com>",
   "scripts": {
