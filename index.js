@@ -2,6 +2,7 @@ const postcss = require('postcss');
 // const cssPropertiesValues = require('css-properties-values');
 const postcssValueParser = require('postcss-value-parser');
 const TIMING_FUNCTIONS = ['cubic-bezier', 'steps', 'ease', 'ease-in', 'ease-out', 'ease-in-out', 'linear', 'step-start', 'step-end'];
+const GLOBAL_VALUES = ['auto', 'inherit', 'initial', 'none', 'unset'];
 
 module.exports = postcss.plugin('postcss-transition', (defaults) => {
   // nothing to process, if no defaults set
@@ -122,12 +123,21 @@ module.exports = postcss.plugin('postcss-transition', (defaults) => {
      * values[] > values[] with defaults
      */
 
-    let values = splitValues(decl.value).map((e) => setDefaults(decl, e));
+    let values = splitValues(decl.value).reduce((_, e) => {
+      if (GLOBAL_VALUES.includes(e.toLowerCase())) {
+        return null;
+      }
 
-    decl.replaceWith({
-      prop: 'transition',
-      value: values.join(', '),
-    });
+      _.push(setDefaults(decl, e));
+      return _;
+    }, []);
+
+    if (values) {
+      decl.replaceWith({
+        prop: 'transition',
+        value: values.join(', '),
+      });
+    }
   }
 
   return (css) => {

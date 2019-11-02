@@ -23,6 +23,23 @@ test('do nothing without defaults', () => {
   ]);
 });
 
+test('process global values', () => {
+  const options = {
+    duration: '$$$',
+    delay: '@@@',
+    timingFunction: '###',
+  };
+
+  return Promise.all([
+    //
+    run(`a { transition: auto; }`, `a { transition: auto; }`, options),
+    run(`a { transition: inherit; }`, `a { transition: inherit; }`, options),
+    run(`a { transition: initial; }`, `a { transition: initial; }`, options),
+    run(`a { transition: none; }`, `a { transition: none; }`, options),
+    run(`a { transition: unset; }`, `a { transition: unset; }`, options),
+  ]);
+});
+
 // Is it necessary at all? and how?
 // test.skip('set property', () => {
 //   const params = {
