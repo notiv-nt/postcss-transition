@@ -104,7 +104,7 @@ module.exports = postcss.plugin('postcss-transition', (defaults) => {
     let processed = Object.assign({}, defaults, found);
 
     if (!processed.property) {
-      throw decl.error('transition must have a property', { plugin: 'postcss-transition' });
+      return entry;
     }
 
     let outValue = '';
@@ -128,7 +128,9 @@ module.exports = postcss.plugin('postcss-transition', (defaults) => {
         return null;
       }
 
-      _.push(setDefaults(decl, e));
+      const def = setDefaults(decl, e);
+
+      _.push(def);
       return _;
     }, []);
 

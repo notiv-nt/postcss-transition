@@ -115,10 +115,14 @@ test('spec 1', () => {
   ]);
 });
 
-test('throw property error', () => {
-  return run(`a { transition: 1s; }`, `a { transition: 1s; }`).catch((e) => {
-    expect(e.reason).toBe('transition must have a property');
-  });
+test('skip if no property found', () => {
+  const options = {
+    duration: '$$$',
+    delay: '@@@',
+    timingFunction: '###',
+  };
+
+  return run(`a { transition: 1s; }`, `a { transition: 1s; }`, options);
 });
 
 test('stress test', () => {
