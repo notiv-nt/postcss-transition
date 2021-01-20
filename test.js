@@ -96,7 +96,9 @@ test('set property', () => {
     property: '$$$',
   };
 
-  return Promise.all([run(`a { transition: , 1s, 1s 2s, 1s 2s ease; }`, `a { transition: $$$, $$$ 1s, $$$ 1s 2s, $$$ 1s 2s ease; }`, params)]);
+  return Promise.all([
+    run(`a { transition: , 1s, 1s 2s, 1s 2s ease; }`, `a { transition: $$$, $$$ 1s, $$$ 1s 2s, $$$ 1s 2s ease; }`, params),
+  ]);
 });
 
 test('spec 1', () => {

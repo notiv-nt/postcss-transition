@@ -1,13 +1,26 @@
 const postcss = require('postcss');
-// const cssPropertiesValues = require('css-properties-values');
 const postcssValueParser = require('postcss-value-parser');
-const TIMING_FUNCTIONS = ['cubic-bezier', 'steps', 'ease', 'ease-in', 'ease-out', 'ease-in-out', 'linear', 'step-start', 'step-end'];
+const TIMING_FUNCTIONS = [
+  'cubic-bezier',
+  'steps',
+  'ease',
+  'ease-in',
+  'ease-out',
+  'ease-in-out',
+  'linear',
+  'step-start',
+  'step-end',
+];
 const GLOBAL_VALUES = ['auto', 'inherit', 'initial', 'none', 'unset'];
+const PLUGIN_NAME = 'postcss-transition';
 
-module.exports = postcss.plugin('postcss-transition', (defaults) => {
+module.exports = (defaults) => {
   // nothing to process, if no defaults set
   if (!defaults) {
-    return () => {};
+    return {
+      postcssPlugin: PLUGIN_NAME,
+      Once() {},
+    };
   }
 
   function isTimeLike(val) {
@@ -109,11 +122,13 @@ module.exports = postcss.plugin('postcss-transition', (defaults) => {
 
     let outValue = '';
 
-    [/* 1 */ processed.property, /* 2 */ processed.duration, /* 3 */ processed.delay, /* 4 */ processed.timingFunction].forEach((v) => {
-      if (v !== null && v !== undefined) {
-        outValue += v + ' ';
+    [/* 1 */ processed.property, /* 2 */ processed.duration, /* 3 */ processed.delay, /* 4 */ processed.timingFunction].forEach(
+      (v) => {
+        if (v !== null && v !== undefined) {
+          outValue += v + ' ';
+        }
       }
-    });
+    );
 
     return outValue.trim();
   }
@@ -142,7 +157,10 @@ module.exports = postcss.plugin('postcss-transition', (defaults) => {
     }
   }
 
-  return (css) => {
-    css.walkDecls('transition', transition);
+  return {
+    postcssPlugin: PLUGIN_NAME,
+    Once(css) {
+      css.walkDecls('transition', transition);
+    },
   };
-});
+};
