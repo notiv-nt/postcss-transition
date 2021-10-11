@@ -16,7 +16,7 @@
     "postcss-value-parser": "^4.1.0"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
+    "jest": "^27.2.5",
     "node-watch": "^0.7.1",
     "nodemon": "^2.0.7",
     "terser": "^5.7.0"
