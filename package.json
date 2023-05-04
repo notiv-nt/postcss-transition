@@ -12,14 +12,14 @@
   "license": "MIT",
   "dependencies": {
     "css-properties-values": "^1.0.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.23",
     "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
-    "jest": "^29.4.3",
+    "jest": "^29.5.0",
     "node-watch": "^0.7.3",
-    "nodemon": "^2.0.20",
-    "terser": "^5.16.5"
+    "nodemon": "^2.0.22",
+    "terser": "^5.17.1"
   },
   "files": [
     "index.bundle.js"
