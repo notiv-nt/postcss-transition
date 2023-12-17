@@ -1,4 +1,3 @@
-const postcss = require('postcss');
 const postcssValueParser = require('postcss-value-parser');
 const TIMING_FUNCTIONS = [
   'cubic-bezier',
@@ -150,10 +149,12 @@ module.exports = (defaults) => {
     }, []);
 
     if (values) {
-      decl.replaceWith({
-        prop: 'transition',
-        value: values.join(', '),
-      });
+      decl.value = values.join(', ');
+
+      // decl.replaceWith({
+      //   prop: 'transition',
+      //   value: values.join(', '),
+      // });
     }
   }
 
